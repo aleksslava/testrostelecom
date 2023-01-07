@@ -1,9 +1,7 @@
 import pytest
-
-import configs
+from configs import configs
 from pages.auth_page import AuthPage
-import time
-from configs import auth_page_link, email, password, phone, login
+from configs.configs import *
 
 
 def test_auth_with_valide_mail(web_browser):
@@ -16,8 +14,9 @@ def test_auth_with_valide_mail(web_browser):
     auth_page.submit()
     assert auth_page.get_relative_link() == "/account_b2c/page"
 
+
 def test_auth_with_valide_phone(web_browser):
-    """ Тест аутентификации с валидным номером телефона и паролем."""
+    """Тест аутентификации с валидным номером телефона и паролем"""
     auth_page = AuthPage(web_browser, auth_page_link)
 
     auth_page.choose_phone()
@@ -26,8 +25,9 @@ def test_auth_with_valide_phone(web_browser):
     auth_page.submit()
     assert auth_page.get_relative_link() == "/account_b2c/page"
 
+
 def test_auth_with_valide_login(web_browser):
-    """Тест аутентификации с валидными логином и паролем."""
+    """  Тест аутентификации с валидными логином и паролем."""
     auth_page = AuthPage(web_browser, auth_page_link)
 
     auth_page.choose_login()
@@ -36,8 +36,9 @@ def test_auth_with_valide_login(web_browser):
     auth_page.submit()
     assert auth_page.get_relative_link() == "/account_b2c/page"
 
+
 def test_auth_autotab_to_mail(web_browser):
-    """Тест, что система автоматически проверяет, что вход осуществляется с помощью почты"""
+    """ Тест, что система автоматически проверяет, что вход осуществляется с помощью почты"""
     auth_page = AuthPage(web_browser, auth_page_link)
 
     auth_page.enter_login(email)
@@ -101,6 +102,7 @@ def test_phone_invalid(web_browser, test_input_phone, output):
     auth_page.enter_password(password)
     auth_page.submit()
     assert auth_page.check_error_phone() == output
+
 
 
 

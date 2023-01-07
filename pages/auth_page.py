@@ -1,6 +1,6 @@
 from .base_page import BasePage
 from .locators import AuthLocators
-from configs import auth_page_link
+from configs.configs import auth_page_link
 from selenium.common.exceptions import NoSuchElementException
 
 
